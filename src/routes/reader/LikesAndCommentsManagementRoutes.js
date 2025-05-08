@@ -6,6 +6,6 @@ router.post('/like-blog/:blogId', likeController);
 router.post('/dislike-blog/:blogId', dislikeController);
 router.post('/comment/:blogId', commentController);
 router.get('/likes-and-dislikes/:blogId', getLikesAndDislikesController);
-router.get('/comments', getCommentsController);
+router.get('/comments/:blogId', getCommentsController);
 
 export default router;

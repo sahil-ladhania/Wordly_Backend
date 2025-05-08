@@ -36,6 +36,25 @@ model User{
   updatedAt DateTime @updatedAt
 }
 
+// Permission
+model Permission{
+  permissionId Int @id @default(autoincrement()) // PK
+  name String @unique
+  rolePermission Role_Permission[] // Role can have multiple Permissions
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Role_Permission
+model Role_Permission{
+  rolePermissionId Int @id @default(autoincrement()) // PK
+  role Role
+  permission Permission @relation(fields: [permissionId] , references: [permissionId])
+  permissionId Int // FK -> Points to permissionId in Permission Model
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 // Blog
 model Blog{
   blogId Int @id @default(autoincrement()) // PK
